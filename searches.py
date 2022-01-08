@@ -6,8 +6,8 @@ from write_txt import *
 load_dotenv()
 file_name = os.getenv('HTML_FILE_NAME')
 
-cleaned = init_clean(file_name)
-searches = cleaned.split(
+f = init_clean(file_name)
+searches = f.split(
     '''<div class="header-cell mdl-cell mdl-cell--12-col"><p class="mdl-typography--title">Search</div><div class="content-cell mdl-cell mdl-cell--6-col mdl-typography--body-1">'''
 )
 
