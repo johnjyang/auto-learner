@@ -16,7 +16,7 @@ for line in lines:
 
 list_to_txt("words_raw", words_list)
 
-keywords = ['to', 'how', 'the', 'of', 'in', 'is', 'a', 'what', 'and', 'on', '', 'does', 'you', 'with', 'are', 'a', 'for']
+keywords = ['to', 'how', 'the', 'of', 'in', 'is', 'a', 'an', 'what', 'and', 'on', '', 'does', 'you', 'with', 'are', 'a', 'for']
 words = []
 freqs = []
 
