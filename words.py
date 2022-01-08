@@ -2,7 +2,7 @@ from write_txt import *
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-with open('data/searches.txt') as f:
+with open('data/searches.txt', 'r', encoding='utf-8') as f:
     lines = f.readlines()
 
 words_list = []
