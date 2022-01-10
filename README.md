@@ -10,5 +10,5 @@ pip install -r requirements.txt
 ```sh
 cp .env.example .env
 ```
-5. Run in order: `create_searches.py` -> `create_clusters.py` -> create_summaries.py`
+5. Run in order: `create_searches.py` -> `create_clusters.py` -> `create_summaries.py`
 6. `.txt` and `.png` are saved in `/data`
