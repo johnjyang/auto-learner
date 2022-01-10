@@ -17,8 +17,7 @@ for s in searches[1:]:
     if s[:8] == "Searched":
         s = s.replace('''Searched for <a href="https://www.google.com/search?q=''', '')
         s = s.replace('''Searched for <a href="''', '')
-        s = s.replace('''amp;tbm=vid''', '')
-        s = s.replace('''amp;tbm=isch''', '')
+        s = s.split('''amp;''')[0]
         s = s.split('''"''')[0]
         s = s.replace('''+''', ' ')
         if not '%' in s and not '/' in s:
