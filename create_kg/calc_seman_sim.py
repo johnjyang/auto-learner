@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer, util
-from GetSearches import *
+from get_searches import *
 
-def CalcSemanticSimi(query, corps, range=None):
+def calc_seman_sim(query, corps, range=None):
     '''
     BERT based semantic similarity calculation
 
@@ -29,7 +29,7 @@ def CalcSemanticSimi(query, corps, range=None):
 search = "most famous architect"
 searches = GetSearches()
 search_range = 1000
-top_results = CalcSemanticSimi(search, searches, search_range)
+top_results = calc_seman_sim(search, searches, search_range)
 top_k = 3
 for i in range(len(top_results[0:top_k])):
     print(top_results[i])

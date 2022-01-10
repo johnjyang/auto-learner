@@ -1,6 +1,6 @@
 import codecs
 
-def InitClean(raw_html):
+def init_clean(raw_html):
     f = codecs.open(raw_html, 'r', encoding='utf-8').read()
     start = '''<div class="outer-cell mdl-cell mdl-cell--12-col mdl-shadow--2dp"><div class="mdl-grid">'''
     end = '''This activity was saved to your Google Account because the following settings were on:&nbsp;Web &amp; App Activity.&nbsp;You can control these settings &nbsp;<a href="https://myaccount.google.com/activitycontrols">here</a>.</div></div></div>'''

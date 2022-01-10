@@ -1,4 +1,4 @@
-def ListToTxt(file, content):
+def list_to_txt(file, content):
     write = ''
 
     for word in content:
@@ -8,7 +8,7 @@ def ListToTxt(file, content):
         f.write(write)
 
 
-def TupleToTxt(file, content):
+def tuple_to_txt(file, content):
     write = ''
 
     for t in content:

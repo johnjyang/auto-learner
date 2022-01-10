@@ -1,4 +1,4 @@
-def GetSearches():
+def get_searches():
 
     with open('./data/searches.txt', 'r', encoding='utf-8') as f:
         lines = f.readlines()
