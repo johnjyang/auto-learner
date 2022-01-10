@@ -6,7 +6,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 model = SentenceTransformer('all-mpnet-base-v2')
-embeddings = model.encode(get_searches()[:500])
+
+embeddings = model.encode(get_searches()[:500],
+                          batch_size=64,
+                          show_progress_bar=True,
+                          convert_to_tensor=True)
 
 umap_embeddings = umap.UMAP(n_neighbors=15,
                             n_components=5,
