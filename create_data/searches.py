@@ -18,7 +18,7 @@ for s in searches[1:]:
         s = s.replace('''Searched for <a href="https://www.google.com/search?q=''', '')
         s = s.split('''"''')[0]
         s = s.replace('''+''', ' ')
-        if s[0] != "%" and s[0] != "/":
+        if not '%' in s and not '/' in s:
             s = s.replace('%27', "'")
             write.append(s.lower())
 

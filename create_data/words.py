@@ -2,7 +2,7 @@ from write_txt import *
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
-with open('data/searches.txt', 'r', encoding='utf-8') as f:
+with open('./data/searches.txt', 'r', encoding='utf-8') as f:
     lines = f.readlines()
 
 words_list = []
@@ -46,5 +46,5 @@ plt.figure(figsize=(10, 10), facecolor=None)
 plt.imshow(wordcloud)
 plt.axis("off")
 plt.tight_layout(pad=0)
+plt.savefig('./data/word_cloud.png')
 plt.show()
-plt.savefig('data/word_cloud.png')
