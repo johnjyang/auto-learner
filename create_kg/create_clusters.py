@@ -37,4 +37,16 @@ for c in range(len(clusters)):
         results.append(searches[i])
     results.append('End of cluster ' + str(c + 1))
 
-write_txt.list_to_txt("search_clusters", results)
+write_txt.list_to_txt("search_clusters_repeat", results)
+
+results = []
+cluster_words = []
+for c in range(len(clusters)):
+    for i in clusters[c]:
+        if not searches[i] in cluster_words:
+            results.append(searches[i])
+            cluster_words.append(searches[i])
+    results.append('End of cluster ' + str(c + 1))
+    cluster_words = []
+
+write_txt.list_to_txt("search_clusters_single", results)

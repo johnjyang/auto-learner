@@ -19,13 +19,14 @@ clusters = get_clusters()
 print("Start summarizing ...")
 start_time = time.time()
 summaries = []
-for cluster in clusters:
-    summary_text = summarizer(cluster,
+for c in range(len(clusters)):
+    summary_text = summarizer(clusters[c],
                               max_length=15,
                               min_length=1,
                               do_sample=False)[0]['summary_text']
     summary_text = summary_text[1:].split(',')[0]
     summaries.append(summary_text)
+    print("Summarized cluster " + str(c + 1) + "/" + str(len(clusters)))
 print("Summarizing completed in {:.2f} secs.".format(time.time() - start_time))
 
 write_txt.list_to_txt("summaries", summaries)
