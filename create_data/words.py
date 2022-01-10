@@ -1,4 +1,4 @@
-from write_txt import *
+from WriteTxt import *
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
@@ -14,7 +14,7 @@ for line in lines:
         term = term.replace('\n', '')
         words_list.append(term)
 
-list_to_txt("words_raw", words_list)
+ListToTxt("words_raw", words_list)
 
 keywords = ['to', 'how', 'the', 'of', 'in', 'is', 'a', 'an', 'what', 'and', 'on', '', 'does', 'you', 'with', 'are', 'a', 'for']
 words = []
@@ -34,7 +34,7 @@ for i in range(len(words_list)):
 words_freqs = list(zip(words, freqs))
 words_freqs.sort(key=lambda i: i[1], reverse=True)
 
-tuple_to_txt("words_freq", words_freqs)
+TupleToTxt("words_freq", words_freqs)
 
 wordcloud = WordCloud(width=800,
                       height=800,
