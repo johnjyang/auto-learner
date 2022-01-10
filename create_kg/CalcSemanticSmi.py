@@ -14,17 +14,16 @@ def CalcSemanticSimi(query, corps, range=None):
     model = SentenceTransformer('all-mpnet-base-v2')
 
     if range:
-        corpus_embeddings = model.encode(corps[:range], convert_to_tensor=True)
+        corpus_embeddings = model.encode(corps[:range])
     else:
-        corpus_embeddings = model.encode(corps, convert_to_tensor=True)
+        corpus_embeddings = model.encode(corps)
 
-    sentence_embedding = model.encode(query, convert_to_tensor=True)
+    sentence_embedding = model.encode(query)
     cos_scores = util.pytorch_cos_sim(sentence_embedding, corpus_embeddings)[0]
     results = list(zip(corps, cos_scores))
     results.sort(key=lambda i: i[1], reverse=True)
 
     return results
-
 
 '''
 search = "most famous architect"
