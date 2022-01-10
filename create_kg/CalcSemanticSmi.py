@@ -1,6 +1,35 @@
 from sentence_transformers import SentenceTransformer, util
 
+'''
+BERT based semantic similarity calculation
 
+Query: search phrase
+Corps: list of phrases to compare to
+Range: specify range of corps (if needed)
+
+Output: list of tuples, (Phrase, Similarity Score)
+
+Usage example:
+`
+with open('./data/searches.txt', 'r', encoding='utf-8') as f:
+    lines = f.readlines()
+
+searches_list = []
+
+for line in lines:
+    line = line.replace('\n', '')
+    searches_list.append(line)
+
+search = "most famous architecture"
+
+search_range = 50
+top_results = CalcSemanticSimi(search, searches_list, search_range)
+
+top_k = 3
+for i in range(len(top_results[0:top_k])):
+    print(top_results[i])
+`
+'''
 def CalcSemanticSimi(query, corps, range=None):
     model = SentenceTransformer('stsb-roberta-large')
     if range:
@@ -13,27 +42,3 @@ def CalcSemanticSimi(query, corps, range=None):
     results.sort(key=lambda i: i[1], reverse=True)
     return results
 
-
-'''
-# Usage
-
-with open('./data/searches.txt', 'r', encoding='utf-8') as f:
-    lines = f.readlines()
-
-searches_list = []
-
-for line in lines:
-    line = line.replace('\n', '')
-    searches_list.append(line)
-
-search = "most famous architecture"
-
-# search_range default = All
-search_range = 50
-top_results = CalcSemanticSimi(search, searches_list, search_range)
-
-top_k = 3
-for i in range(len(top_results[0:top_k])):
-    print(top_results[i])
-
-'''
