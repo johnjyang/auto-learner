@@ -1,4 +1,5 @@
 from sentence_transformers import SentenceTransformer, util
+from GetSearches import *
 
 def CalcSemanticSimi(query, corps, range=None):
     '''
@@ -10,7 +11,7 @@ def CalcSemanticSimi(query, corps, range=None):
 
     Output: list of tuples, (Phrase, Similarity Score)
     '''
-    model = SentenceTransformer('stsb-roberta-large')
+    model = SentenceTransformer('all-mpnet-base-v2')
 
     if range:
         corpus_embeddings = model.encode(corps[:range], convert_to_tensor=True)
@@ -26,9 +27,9 @@ def CalcSemanticSimi(query, corps, range=None):
 
 
 '''
-search = "most famous architecture"
+search = "most famous architect"
 searches = GetSearches()
-search_range = 50
+search_range = 1000
 top_results = CalcSemanticSimi(search, searches, search_range)
 top_k = 3
 for i in range(len(top_results[0:top_k])):
