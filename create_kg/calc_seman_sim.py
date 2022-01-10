@@ -22,10 +22,10 @@ def calc_seman_sim(query, corps):
                                       show_progress_bar=True,
                                       convert_to_tensor=True)
 
-    print("Start calculating..")
+    print("Start calculations ...")
     start_time = time.time()
     cos_scores = util.pytorch_cos_sim(sentence_embedding, corpus_embeddings)[0]
-    print("Calculation completed after {:.2f} sec".format(time.time() - start_time))
+    print("Calculations completed in {:.2f} secs.".format(time.time() - start_time))
 
     results = list(zip(corps, cos_scores))
     results.sort(key=lambda i: i[1], reverse=True)

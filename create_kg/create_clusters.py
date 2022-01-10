@@ -19,7 +19,7 @@ corpus_embeddings = model.encode(searches,
                                  show_progress_bar=True,
                                  convert_to_tensor=True)
 
-print("Start clustering..")
+print("Start clustering ...")
 start_time = time.time()
 
 #Two parameters to tune:
@@ -29,7 +29,7 @@ clusters = util.community_detection(corpus_embeddings,
                                     min_community_size=2,
                                     threshold=0.6)
 
-print("Clustering completed after {:.2f} sec".format(time.time() - start_time))
+print("Clustering completed in {:.2f} secs.".format(time.time() - start_time))
 
 results = []
 for c in range(len(clusters)):

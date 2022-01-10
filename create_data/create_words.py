@@ -1,8 +1,7 @@
 from write_txt import *
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-
-from create_data.write_txt import list_to_txt
+from write_txt import list_to_txt
 
 with open('./data/searches.txt', 'r', encoding='utf-8') as f:
     lines = f.readlines()
