@@ -13,23 +13,23 @@ from create_data import write_txt
 model = SentenceTransformer('all-mpnet-base-v2')
 
 searches = get_searches()
-print("Encode the corpus. This might take a while")
+print("Encode the corpus. This might take a while.")
 corpus_embeddings = model.encode(searches,
                                  batch_size=64,
                                  show_progress_bar=True,
                                  convert_to_tensor=True)
 
-print("Start clustering")
+print("Start clustering..")
 start_time = time.time()
 
 #Two parameters to tune:
-#min_cluster_size: Only consider cluster that have at least 25 elements
+#min_cluster_size: Only consider cluster that have at least # elements
 #threshold: Consider sentence pairs with a cosine-similarity larger than threshold as similar
 clusters = util.community_detection(corpus_embeddings,
                                     min_community_size=2,
-                                    threshold=0.75)
+                                    threshold=0.6)
 
-print("Clustering done after {:.2f} sec".format(time.time() - start_time))
+print("Clustering completed after {:.2f} sec".format(time.time() - start_time))
 
 results = []
 for c in range(len(clusters)):
@@ -38,4 +38,3 @@ for c in range(len(clusters)):
     results.append('End of cluster ' + str(c + 1))
 
 write_txt.list_to_txt("search_clusters", results)
-
