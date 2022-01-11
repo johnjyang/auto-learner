@@ -15,7 +15,8 @@ write = []
 
 for s in searches[1:]:
     if s[:8] == "Searched":
-        s = s.replace('''Searched for <a href="https://www.google.com/search?q=''', '')
+        s = s.replace(
+            '''Searched for <a href="https://www.google.com/search?q=''', '')
         s = s.replace('''Searched for <a href="''', '')
         s = s.split('''amp;''')[0]
         s = s.split('''"''')[0]
@@ -24,4 +25,4 @@ for s in searches[1:]:
             s = s.replace('%27', "'")
             write.append(s.lower())
 
-list_to_txt("searches", write)
+list_of_str_to_txt("searches", write)

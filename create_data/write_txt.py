@@ -1,8 +1,18 @@
-def list_to_txt(file, content):
+def list_of_str_to_txt(file, content):
     write = ''
 
     for word in content:
         write += word + '\n'
+
+    with open(f"./data/{file}.txt", 'w', encoding='utf-8') as f:
+        f.write(write)
+
+
+def list_of_list_to_txt(file, content):
+    write = ''
+
+    for l in content:
+        write += l[0] + '\n'
 
     with open(f"./data/{file}.txt", 'w', encoding='utf-8') as f:
         f.write(write)

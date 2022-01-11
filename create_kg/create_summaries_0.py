@@ -35,4 +35,4 @@ for c in range(len(clusters)):
     print("Summarized cluster " + str(c + 1) + "/" + str(len(clusters)))
 print("Summarizing completed in {:.2f} secs.".format(time.time() - start_time))
 
-write_txt.list_to_txt("summaries", summaries)
+write_txt.list_of_str_to_txt("summaries", summaries)

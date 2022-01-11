@@ -1,7 +1,7 @@
 from write_txt import *
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-from write_txt import list_to_txt
+from write_txt import list_of_str_to_txt
 
 with open('./data/searches.txt', 'r', encoding='utf-8') as f:
     lines = f.readlines()
@@ -15,9 +15,12 @@ for line in lines:
         term = term.replace('\n', '')
         words_list.append(term)
 
-list_to_txt("words_raw", words_list)
+list_of_str_to_txt("words_raw", words_list)
 
-keywords = ['to', 'how', 'the', 'of', 'in', 'is', 'a', 'an', 'what', 'and', 'on', '', 'does', 'you', 'with', 'are', 'a', 'for']
+keywords = [
+    'to', 'how', 'the', 'of', 'in', 'is', 'a', 'an', 'what', 'and', 'on', '',
+    'does', 'you', 'with', 'are', 'a', 'for'
+]
 words = []
 freqs = []
 

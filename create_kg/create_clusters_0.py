@@ -4,6 +4,7 @@ from sentence_transformers import SentenceTransformer, util
 from get_searches import *
 import time
 import os, sys
+
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
@@ -37,7 +38,7 @@ for c in range(len(clusters)):
         results.append(searches[i])
     results.append('End of cluster ' + str(c + 1))
 
-write_txt.list_to_txt("search_clusters_repeat", results)
+write_txt.list_of_str_to_txt("search_clusters_repeat", results)
 
 results = []
 cluster_words = []
@@ -49,4 +50,4 @@ for c in range(len(clusters)):
     results.append('End of cluster ' + str(c + 1))
     cluster_words = []
 
-write_txt.list_to_txt("search_clusters_single", results)
+write_txt.list_of_str_to_txt("search_clusters_single", results)
