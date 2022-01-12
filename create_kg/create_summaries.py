@@ -12,7 +12,7 @@ def summarize_clusters(clusters, model):
     summaries = []
     for c in range(len(clusters)):
         if len(clusters[c].split(',')) <= 3:
-            summary_text = min(clusters[c].split(','))
+            summary_text = min(clusters[c].split(',').lower())
         else:
             summary_text = model(clusters[c],
                                     max_length=15,
@@ -29,14 +29,13 @@ def summarize_clusters(clusters, model):
                     summary_text = summary_text.split(' are ')[0]
                     summary_text = summary_text.split(' include ')[0]
                     summary_text = summary_text.split('?')[0]
-            summary_text = summary_text.lstrip().strip()
-            if summary_text:
-                summaries.append(summary_text)
-            else:
-                summaries.append(clusters[c].split(',')[0])
-                print(str(f'Error: cluster {c}, {clusters[c]}, {summary_text}'))
-                write_txt.list_of_str_to_txt(
-                    'errors', [str(f'Error: cluster {c}, {clusters[c]}, {summary_text}')])
+        if summary_text:
+            summaries.append(summary_text.lstrip().strip())
+        else:
+            summaries.append(clusters[c].split(',')[0])
+            print(str(f'Error: cluster {c}, {clusters[c]}, {summary_text}'))
+            write_txt.list_of_str_to_txt(
+                'errors', [str(f'Error: cluster {c}, {clusters[c]}, {summary_text}')])
         print(
             f'Summarized cluster {str(c + 1)}/{str(len(clusters))}: {summary_text.lower()}'
         )
