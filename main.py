@@ -16,10 +16,9 @@ log_searches(cleaned_html)
 # create and log clusters_0 from searches
 searches = get_data('searches')
 cluster_model = SentenceTransformer('all-mpnet-base-v2')
-clusters_0_raw = create_clusters(searches, cluster_model, 0.6)
+clusters_0_raw = create_clusters(searches, cluster_model, 0.5)
 log_clusters('clusters_0', clusters_0_raw, searches)
 log_clusters('clusters_0_repeat', clusters_0_raw, searches, True)
-
 
 # create and log summaries_0 from clusters_0
 clusters_0 = get_data('clusters_0')
@@ -30,7 +29,7 @@ log_summaries('summaries_0', summaries_0_raw)
 
 # create and log clusters_1 from summaries_0
 summaries_0 = get_data('summaries_0')
-clusters_1_raw = create_clusters(summaries_0, cluster_model, 0.4)
+clusters_1_raw = create_clusters(summaries_0, cluster_model, 0.3)
 log_clusters('clusters_1', clusters_1_raw, summaries_0)
 
 # create and log summaries_1 from clusters_1
