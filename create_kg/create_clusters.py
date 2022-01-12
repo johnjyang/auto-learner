@@ -7,7 +7,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 from create_data import write_txt
 
-def create_clusters(corpus, model):
+def create_clusters(corpus, model, similarity_score):
     print("Encoding the corpus. This might take a while.")
     corpus_embeddings = model.encode(corpus,
                                      batch_size=64,
@@ -17,7 +17,7 @@ def create_clusters(corpus, model):
     start_time = time.time()
     clusters = util.community_detection(corpus_embeddings,
                                         min_community_size=2,
-                                        threshold=0.6)
+                                        threshold=similarity_score)
     print("Clustering completed in {:.2f} secs.".format(time.time() - start_time))
     return clusters
 

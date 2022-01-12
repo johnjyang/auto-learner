@@ -11,8 +11,8 @@ def summarize_clusters(clusters, model):
     start_time = time.time()
     summaries = []
     for c in range(len(clusters)):
-        if not clusters[c].split(',')[0].split(' ')[0]:
-            summary_text = clusters[c].split(' ')[1]
+        if len(clusters[c].split(',')) <= 3:
+            summary_text = min(clusters[c].split(','))
         else:
             summary_text = model(clusters[c],
                                     max_length=15,
