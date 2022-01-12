@@ -17,9 +17,10 @@ def summarize_clusters(clusters, model):
                                 do_sample=False)[0]['summary_text']
         summary_text = summary_text.replace('"', '')
         summary_text = summary_text.split(',')[0]
-        summary_text = summary_text.split(' . ')[0]
+        summary_text = summary_text.split(' .')[0]
         summary_text = summary_text.split(':  ')[0]
-        summary_text = summary_text.split('is')[0]
+        summary_text = summary_text.split(' is ')[0]
+        summary_text = summary_text.split(' are ')[0]
         summary_text = summary_text.lstrip().strip()
         if summary_text:
             summaries.append(summary_text.lower())
