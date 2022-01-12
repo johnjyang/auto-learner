@@ -4,3 +4,4 @@ data/
 **/experiments/
 **/__pycache__/
 .vscode/
+test.py
