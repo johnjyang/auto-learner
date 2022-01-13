@@ -11,26 +11,20 @@ def summarize_clusters(clusters, model):
     start_time = time.time()
     summaries = []
     for c in range(len(clusters)):
-        if len(clusters[c].split(',')) <= 3:
-            summary_text = min(clusters[c].split(',').lower())
+        if len(clusters[c].split(', ')) <= 3:
+            summary_text = min(clusters[c].split(', '), key=len).lower().lstrip()
         else:
-            summary_text = model(clusters[c],
-                                    max_length=15,
-                                    min_length=1,
-                                    do_sample=False)[0]['summary_text']
-            summary_text = summary_text.lower().lstrip()
-            summary_text = summary_text.replace('"', '')
-            summary_text = summary_text.split(',')[0]
-            summary_text = summary_text.split(' .')[0]
-            summary_text = summary_text.split(':  ')[0]
-            if not summary_text in clusters[c]:
-                if summary_text[:2] != 'is' and summary_text[:3] != 'are' and summary_text[:7] != 'include':
-                    summary_text = summary_text.split(' is ')[0]
-                    summary_text = summary_text.split(' are ')[0]
-                    summary_text = summary_text.split(' include ')[0]
-                    summary_text = summary_text.split('?')[0]
+            summary_text = model(clusters[c][:1023], max_length=15, min_length=1, do_sample=False)[0]['summary_text'].lower().lstrip()
+            found_search = False
+            for search in clusters[c].split(', '):
+                if search in summary_text:
+                    summary_text = search
+                    found_search = True
+                    break
+            if not found_search:
+                summary_text = clusters[c].split(',')[0]
         if summary_text:
-            summaries.append(summary_text.lstrip().strip())
+            summaries.append(summary_text.strip())
         else:
             summaries.append(clusters[c].split(',')[0])
             print(str(f'Error: cluster {c}, {clusters[c]}, {summary_text}'))
