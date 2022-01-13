@@ -1,11 +1,11 @@
 import os
 from dotenv import load_dotenv
+from sentence_transformers import SentenceTransformer
+from transformers import pipeline
 from create_data.init_clean import *
 from create_data.create_searches import *
 from create_kg.get_data import *
-from sentence_transformers import SentenceTransformer
 from create_kg.create_clusters import *
-from transformers import pipeline
 from create_kg.create_summaries import *
 
 # clean html and log searches
