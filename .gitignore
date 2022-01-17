@@ -1,7 +1,8 @@
 .env
-*.html
+MyActivity.html
 data/
 **/experiments/
 **/__pycache__/
 .vscode/
 test.py
+**/node_modules
