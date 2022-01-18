@@ -37,6 +37,7 @@
           width: 100%;
       }
       .minimap {
+        margin-top: -100px;
         float: right;
       }
       .g6-tooltip {
@@ -68,8 +69,8 @@
               className: 'minimap',
               type: 'delegate',
             });
-        const width = container.scrollWidth;
-        const height = container.scrollHeight || 720;
+        const width = container.scrollWidth || window.innerWidth;
+        const height = container.scrollHeight || window.innerHeight;
         const graph = new G6.TreeGraph({
           container: 'container',
           plugins: [minimap],
