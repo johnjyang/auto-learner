@@ -1,6 +1,5 @@
 .env
 MyActivity.html
-*.json
 data/
 **/experiments/
 **/__pycache__/
