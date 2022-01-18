@@ -52,7 +52,7 @@ data = {
 children = []
 word_list = []
 
-for s in range(len(sum_1_t[:15])):
+for s in range(len(sum_1_t)):
     dict_0 = {
         "id": sum_1_t[s][0] + "_0",
         "name": sum_1_t[s][0],
