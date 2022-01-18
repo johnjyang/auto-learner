@@ -47,12 +47,13 @@ for s in range(len(s_1)):
 data = {
         "id": "John's Search History",
         "name": "John's Search History",
+        "level": 0,
         "children": []
         }
 children = []
 word_list = []
 
-for s in range(len(sum_1_t[:100])):
+for s in range(len(sum_1_t[:15])):
     dict_0 = {
         "id": sum_1_t[s][0] + "_0",
         "name": sum_1_t[s][0],
@@ -72,7 +73,7 @@ for s in range(len(sum_1_t[:100])):
             if not sum_1_t[s][1][s1 + 1][s2] in word_list:
                 dict_2 = {
                     "id": sum_1_t[s][1][s1 + 1][s2] + "_2",
-                    "name": sum_1_t[s][1][s1 + 1][s2]
+                    "name": sum_1_t[s][1][s1 + 1][s2],
                 }
                 children_1.append(dict_2)
                 word_list.append(sum_1_t[s][1][s1 + 1][s2])
@@ -86,5 +87,5 @@ for s in range(len(sum_1_t[:100])):
 data["children"] = children
 data = json.dumps(data)
 
-with open('./data/search_tree.json', 'w') as outfile:
+with open('./frontend/search_tree.json', 'w') as outfile:
     outfile.write(data)
