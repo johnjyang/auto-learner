@@ -12,3 +12,5 @@ cp .env.example .env
 3. Replace `HTML_FILE_NAME` in `.env` with your own `MyActivity.html` file downloaded from [Google takeout](https://takeout.google.com)
 4. Specify `CUDA_GPU_COUNT` in `.env`. Default is set to 0.
 5. Run `main.py`
+6. Run `create_kg/create_tree_json.py`
+7. Run `frontend/index.html`

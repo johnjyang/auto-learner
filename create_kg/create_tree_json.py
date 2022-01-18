@@ -89,5 +89,6 @@ for s in range(len(sum_1_t[:50])):
 data["children"] = children
 data = json.dumps(data)
 
+# write json file
 with open('./frontend/search_tree.json', 'w') as outfile:
     outfile.write(data)
