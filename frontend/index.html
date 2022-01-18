@@ -15,7 +15,7 @@
           .then((data) => {
         const container = document.getElementById('container');
         const width = container.scrollWidth;
-        const height = container.scrollHeight || 1000;
+        const height = container.scrollHeight || 800;
         const graph = new G6.TreeGraph({
           container: 'container',
           width,
@@ -60,7 +60,7 @@
               position: node.children && node.children.length > 0 ? 'left' : 'right',
               offset: 5,
               style: {
-                fontSize: 10,
+                fontSize: 5,
               }
             },
           };
