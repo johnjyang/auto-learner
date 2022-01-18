@@ -5,19 +5,74 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
     <title></title>
+    <style>
+      body {
+            overflow: hidden;
+            font-family: Monospace;
+            font-size: 13px;
+            line-height: 15px;
+            color: #666;
+            margin: 0px;
+            padding: 0;
+        }
+      .info-left {
+            position: absolute;
+            box-sizing: border-box;
+            text-align: left;
+            bottom: 0px;
+            padding-left:  10px;
+            width: 100%;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+        }
+      .info-right {
+          position: absolute;
+          box-sizing: border-box;
+          text-align: right;
+          bottom: 0px;
+          padding-right: 10px;
+          width: 100%;
+      }
+      .minimap {
+        float: right;
+      }
+      .g6-tooltip {
+        border: 1px solid #e2e2e2;
+        border-radius: 4px;
+        font-size: 15px;
+        color: #545454;
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 10px 8px;
+        box-shadow: rgb(174, 174, 174) 0px 0px 10px;
+      }
+    </style>
   </head>
   <body>
     <div id="container"></div>
+    <div class="info-left">
+      <p>drag to move</p>
+      <p>scroll to zoom in/out</p>
+      <p>hover to enlarge</p>
+    </div>
     <script src="https://gw.alipayobjects.com/os/lib/antv/g6/4.3.11/dist/g6.min.js"></script>
     <script type="module">
       fetch('https://auto-learner.vercel.app/search_tree.json')
           .then((res) => res.json())
           .then((data) => {
         const container = document.getElementById('container');
+        const minimap = new G6.Minimap({
+              size: [100, 100],
+              className: 'minimap',
+              type: 'delegate',
+            });
         const width = container.scrollWidth;
-        const height = container.scrollHeight || 1000;
+        const height = container.scrollHeight || 720;
         const graph = new G6.TreeGraph({
           container: 'container',
+          plugins: [minimap],
           width,
           height,
           modes: {
@@ -30,12 +85,19 @@
                   return true;
                 },
               },
+              {
+                type: 'tooltip',
+                formatText(model) {
+                  const text = model.name;
+                  return text;
+                },
+              },
               'drag-canvas',
               'zoom-canvas',
             ],
           },
           defaultNode: {
-            size: 5,
+            size: 10,
             anchorPoints: [
               [0, 0.5],
               [1, 0.5],
