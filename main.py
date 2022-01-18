@@ -8,6 +8,7 @@ from create_kg.get_data import *
 from create_kg.create_clusters import *
 from create_kg.create_summaries import *
 
+'''
 # clean html and log searches
 load_dotenv()
 cleaned_html = init_clean(os.getenv('HTML_FILE_NAME'))
@@ -36,3 +37,4 @@ log_clusters('clusters_1', clusters_1_raw, summaries_0)
 clusters_1 = get_data('clusters_1')
 summaries_1_raw = summarize_clusters(clusters_1, summarize_model)
 log_summaries('summaries_1', summaries_1_raw)
+'''
