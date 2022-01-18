@@ -36,7 +36,6 @@
           },
           defaultNode: {
             size: 5,
-            visible: false,
             anchorPoints: [
               [0, 0.5],
               [1, 0.5],
@@ -44,7 +43,6 @@
           },
           defaultEdge: {
             type: 'cubic-horizontal',
-            visible: false,
           },
           layout: {
             type: 'dendrogram',
@@ -56,30 +54,16 @@
         });
 
         graph.node(function (node) {
-          if (node.level <= 1) {
-            return {
-              label: node.name,
-              visible: true,
-              labelCfg: {
-                position: node.children && node.children.length > 0 ? 'left' : 'right',
-                offset: 5,
-                style: {
-                  fontSize: 10,
-                }
-              },
-            };
-          } else {
-            return {
-              label: node.name,
-              labelCfg: {
-                position: node.children && node.children.length > 0 ? 'left' : 'right',
-                offset: 5,
-                style: {
-                  fontSize: 10,
-                }
-              },
-            };
-          }
+          return {
+            label: node.name,
+            labelCfg: {
+              position: node.children && node.children.length > 0 ? 'left' : 'right',
+              offset: 5,
+              style: {
+                fontSize: 10,
+              }
+            },
+          };
         });
 
         graph.data(data);

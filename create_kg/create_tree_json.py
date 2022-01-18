@@ -45,11 +45,10 @@ for s in range(len(s_1)):
 
 # list of [sum_1, [sum_0, [searches]]] -> {"id": sum_1, "name": sum_1, children: [{[sum_0, [searches]]}]}
 data = {
-        "id": "John's Search History",
-        "name": "John's Search History",
-        "level": 0,
-        "children": []
-        }
+    "id": "John's Search History",
+    "name": "John's Search History",
+    "children": []
+}
 children = []
 word_list = []
 
@@ -57,7 +56,7 @@ for s in range(len(sum_1_t[:15])):
     dict_0 = {
         "id": sum_1_t[s][0] + "_0",
         "name": sum_1_t[s][0],
-        "level": 1,
+        "collapsed": True,
         "children": []
     }
     children_0 = []
@@ -66,7 +65,7 @@ for s in range(len(sum_1_t[:15])):
         dict_1 = {
             "id": sum_1_t[s][1][s1] + "_1",
             "name": sum_1_t[s][1][s1],
-            "level": 2,
+            "collapsed": True,
             "children": []
         }
         children_1 = []
@@ -76,7 +75,7 @@ for s in range(len(sum_1_t[:15])):
                 dict_2 = {
                     "id": sum_1_t[s][1][s1 + 1][s2] + "_2",
                     "name": sum_1_t[s][1][s1 + 1][s2],
-                    "level": 3,
+                    "collapsed": True,
                 }
                 children_1.append(dict_2)
                 word_list.append(sum_1_t[s][1][s1 + 1][s2])
