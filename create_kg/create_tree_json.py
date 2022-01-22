@@ -60,6 +60,7 @@ for s in range(len(sum_1_t)):
 data = {
     "id": "John's Search History",
     "name": "John's Search History",
+    "date": "Not a search, no date",
     "children": []
 }
 children = []
@@ -69,6 +70,7 @@ for s in range(len(sum_1_t[:50])):
     dict_0 = {
         "id": sum_1_t[s][0] + "_0",
         "name": sum_1_t[s][0],
+        "date": "Not a search, no date",
         "collapsed": True,
         "children": []
     }
@@ -78,6 +80,7 @@ for s in range(len(sum_1_t[:50])):
         dict_1 = {
             "id": sum_1_t[s][1][s1] + "_1",
             "name": sum_1_t[s][1][s1],
+            "date": "Not a search, no date",
             "collapsed": True,
             "children": []
         }
