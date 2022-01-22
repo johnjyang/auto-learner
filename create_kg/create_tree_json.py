@@ -53,14 +53,14 @@ for s in range(len(sum_1_t)):
             if search in searches:
                 date = dates[searches.index(search)]
             else:
-                date = None
+                date = 'No date found'
             sum_1_t[s][1][s1 + 1][s2] = (search, date)
 
 # list of [sum_1, [sum_0, [searches]]] -> {"id": sum_1, "name": sum_1, children: [{[sum_0, [searches]]}]}
 data = {
     "id": "John's Search History",
     "name": "John's Search History",
-    "date": "Not a search, no date",
+    "date": "N/A",
     "children": []
 }
 children = []
@@ -70,7 +70,7 @@ for s in range(len(sum_1_t[:50])):
     dict_0 = {
         "id": sum_1_t[s][0] + "_0",
         "name": sum_1_t[s][0],
-        "date": "Not a search, no date",
+        "date": "N/A",
         "collapsed": True,
         "children": []
     }
@@ -80,7 +80,7 @@ for s in range(len(sum_1_t[:50])):
         dict_1 = {
             "id": sum_1_t[s][1][s1] + "_1",
             "name": sum_1_t[s][1][s1],
-            "date": "Not a search, no date",
+            "date": "N/A",
             "collapsed": True,
             "children": []
         }
