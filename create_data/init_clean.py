@@ -11,6 +11,4 @@ def init_clean(raw_html_name):
     f = f.split('<body>')[1]
     for phrase in keywords:
         f = f.replace(phrase, '')
-    return f.split(
-        '''<div class="header-cell mdl-cell mdl-cell--12-col"><p class="mdl-typography--title">Search</div><div class="content-cell mdl-cell mdl-cell--6-col mdl-typography--body-1">'''
-    )
+    return f.split('mdl-typography--body-1">')

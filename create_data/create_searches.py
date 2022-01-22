@@ -1,16 +1,17 @@
 from create_data.write_txt import *
+import html
 
 def log_searches(cleaned_html):
-    write = []
-    for s in cleaned_html[1:]:
-        if s[:8] == "Searched":
-            s = s.replace(
-                '''Searched for <a href="https://www.google.com/search?q=''', '')
-            s = s.replace('''Searched for <a href="''', '')
-            s = s.split('''amp;''')[0]
-            s = s.split('''"''')[0]
-            s = s.replace('''+''', ' ')
-            if not '%' in s and not '/' in s:
-                s = s.replace('%27', "'")
-                write.append(s.lower())
-    list_of_str_to_txt("searches", write)
+    searches = []
+    dates = []
+    for query in cleaned_html[1:]:
+        if query[:4] != 'Used' and query[:4] != 'View':
+            if '<a' in query:
+                query = query.split('''">''')[1]
+                s = query.split('</a>')[0]
+                s = s.replace('#39;', "'")
+                searches.append(html.unescape(s.lower()))
+                d = query.split('</a>')[1].split('</div>')[0]
+                dates.append(d)
+    list_of_str_to_txt("searches", searches)
+    list_of_str_to_txt("dates", dates)
