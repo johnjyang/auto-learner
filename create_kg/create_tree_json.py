@@ -5,6 +5,8 @@ s_1 = get_data("summaries_1")
 c_1 = get_data("clusters_1")
 s_0 = get_data("summaries_0")
 c_0 = get_data("clusters_0")
+searches = get_data("searches")
+dates = get_data("dates")
 
 # list of string -> list of s_0
 c_1_split = []
@@ -43,6 +45,17 @@ for s in range(len(s_1)):
     tmp_c.append(sum_0_t[s])
     sum_1_t.append(tmp_c)
 
+# list of [sum_1, [sum_0, [searches]]] --> list of [sum_1, [sum_0, [(searches, dates)]]]
+for s in range(len(sum_1_t)):
+    for s1 in range(0, len(sum_1_t[s][1]), 2):
+        for s2 in range(len(sum_1_t[s][1][s1 + 1])):
+            search = sum_1_t[s][1][s1 + 1][s2]
+            if search in searches:
+                date = dates[searches.index(search)]
+            else:
+                date = None
+            sum_1_t[s][1][s1 + 1][s2] = (search, date)
+
 # list of [sum_1, [sum_0, [searches]]] -> {"id": sum_1, "name": sum_1, children: [{[sum_0, [searches]]}]}
 data = {
     "id": "John's Search History",
@@ -72,9 +85,12 @@ for s in range(len(sum_1_t[:50])):
 
         for s2 in range(len(sum_1_t[s][1][s1 + 1])):
             if not sum_1_t[s][1][s1 + 1][s2] in word_list:
+                search = sum_1_t[s][1][s1 + 1][s2][0]
+                date = sum_1_t[s][1][s1 + 1][s2][1]
                 dict_2 = {
-                    "id": sum_1_t[s][1][s1 + 1][s2] + "_2",
-                    "name": sum_1_t[s][1][s1 + 1][s2],
+                    "id": search + "_2",
+                    "name": search,
+                    "date": date,
                     "collapsed": True,
                 }
                 children_1.append(dict_2)
