@@ -12,7 +12,7 @@ from create_kg.create_summaries import *
 load_dotenv()
 cleaned_html = init_clean(os.getenv('HTML_FILE_NAME'))
 log_searches(cleaned_html)
-'''
+
 # create and log clusters_0 from searches
 searches = get_data('searches')
 cluster_model = SentenceTransformer('all-mpnet-base-v2')
@@ -36,4 +36,3 @@ log_clusters('clusters_1', clusters_1_raw, summaries_0)
 clusters_1 = get_data('clusters_1')
 summaries_1_raw = summarize_clusters(clusters_1, summarize_model)
 log_summaries('summaries_1', summaries_1_raw)
-'''
