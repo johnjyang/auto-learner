@@ -1,5 +1,6 @@
 import time
 import os, sys
+import re
 
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
@@ -14,15 +15,18 @@ def summarize_clusters(clusters, model):
         if len(clusters[c].split(', ')) <= 3:
             summary_text = min(clusters[c].split(', '), key=len).lower().lstrip()
         else:
-            summary_text = model(clusters[c][:1023], max_length=15, min_length=1, do_sample=False)[0]['summary_text'].lower().lstrip()
-            found_search = False
-            for search in clusters[c].split(', '):
-                if search in summary_text:
-                    summary_text = search
-                    found_search = True
-                    break
-            if not found_search:
-                summary_text = clusters[c].split(',')[0]
+            if not re.search("[\u4e00-\u9FFF]", clusters[c][0]):
+                summary_text = model(clusters[c][:1024], max_length=15, min_length=1, do_sample=False)[0]['summary_text'].lower().lstrip()
+                found_search = False
+                for search in clusters[c].split(', '):
+                    if search in summary_text:
+                        summary_text = search
+                        found_search = True
+                        break
+                if not found_search:
+                    summary_text = clusters[c].split(',')[0]
+            else:
+                summary_text = 'n/a (chinese)'
         if summary_text:
             summaries.append(summary_text.strip())
         else:
