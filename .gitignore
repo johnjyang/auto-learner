@@ -6,3 +6,4 @@ data/
 .vscode/
 test.py
 **/node_modules
+**/.DS_Store
