@@ -1,6 +1,7 @@
 from create_data.write_txt import *
 import html
 
+
 def log_searches(cleaned_html):
     print('Parsing searches and dates from html.')
     searches = []

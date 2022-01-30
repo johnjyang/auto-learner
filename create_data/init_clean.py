@@ -1,5 +1,6 @@
 import codecs
 
+
 def init_clean(raw_html_name):
     f = codecs.open(raw_html_name, 'r', encoding='utf-8').read()
     start = '''<div class="outer-cell mdl-cell mdl-cell--12-col mdl-shadow--2dp"><div class="mdl-grid">'''

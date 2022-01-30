@@ -7,6 +7,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 from create_data import write_txt
 
+
 def summarize_clusters(clusters, model):
     print("Start summarizing ...")
     start_time = time.time()

@@ -2,6 +2,7 @@ from create_kg.get_data import *
 import random
 import json
 
+
 def create_tree_json():
     s_1 = get_data("summaries_1")
     c_1 = get_data("clusters_1")

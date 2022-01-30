@@ -7,6 +7,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
 from create_data import write_txt
 
+
 def create_clusters(corpus, model, similarity_score):
     print("Encoding the corpus. This might take a while.")
     corpus_embeddings = model.encode(corpus,
