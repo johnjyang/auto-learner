@@ -1,0 +1,28 @@
+big ideas:
+
+- information is stored in the order in which neurons are activated, not (only) the neurons themselves.
+    - each neuron represents one entity in the natural world
+
+- no information can be retrieved without a proper stimulus (embedding/distribution)
+    - this means that each neuron must be created with a range of stimulus required to activate it
+
+- once a neuron is activated, it outputs a response less in amplitude than the stimulus it received
+    - the neuron carries a matrix that, if multiplied to the stimulus, will decrease (or completely clear) the distribution represented by the neuron
+
+- if a stimulus gets passed to the leaf of a strand and is not 0, a new neuron that is activated by the stimulus is created
+    - a neuron can represent a Null entity if created during reactivation, then the entity that activates the neuron next time would fill in its spot
+
+- neurons (including its strands) representing the same entities are integrated to accept a broader range of stimulus
+    - and with each integration, the new stimulus (carried by the new neuron) should be sent down to all edges connected to the old neuron (term: reactivation)
+
+- all edges are only unidirectional
+    - through integration, a new edge of opposite direction can be created if a new direction of activation is observed
+
+- (draft) in training: sentences are embedded to create stimulus, words are embedded to create entities
+    - embeddings are reliably unique, n-dimentional verctors
+
+- size of system is a function of the amount of information observed
+    - nature: a bigger brain can achieve more control over the body (instead of relying on reflexes)
+
+- neurons die if not activated in a certain timeframe
+    - its edge with other neurons would be deleted, so the information would be gone with it
