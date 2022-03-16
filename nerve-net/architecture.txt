@@ -12,8 +12,8 @@ big ideas:
 - if a stimulus gets passed to the leaf of a strand and is not 0, a new neuron that is activated by the stimulus is created
     - a neuron can represent a Null entity if created during reactivation, then the entity that activates the neuron next time would fill in its spot
 
-- neurons (including its strands) representing the same entities are integrated to accept a broader range of stimulus
-    - and with each integration, the new stimulus (carried by the new neuron) should be sent down to all edges connected to the old neuron (term: reactivation)
+- neurons (including its strands) representing the same entities are added to accept a broader range of stimulus
+    - and with each addition, the new stimulus (carried by the new neuron) should be sent down to all edges connected to the old neuron (hence "reactivation")
 
 - all edges are only unidirectional
     - through integration, a new edge of opposite direction can be created if a new direction of activation is observed
@@ -24,5 +24,5 @@ big ideas:
 - size of system is a function of the amount of information observed
     - nature: a bigger brain can achieve more control over the body (instead of relying on reflexes)
 
-- neurons die if not activated in a certain timeframe
+- neurons/edges die if not activated in a certain timeframe
     - its edge with other neurons would be deleted, so the information would be gone with it
